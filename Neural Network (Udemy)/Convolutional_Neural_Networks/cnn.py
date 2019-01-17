@@ -40,14 +40,26 @@ classifier = Sequential() # create object of a sequential
 classifier.add(Conv2D(32, (3, 3), input_shape = (64, 64, 3), activation = 'relu'))
 # add the layer for convolutional layer. For the ANN, we used the Dense function which was used to
 # create the full layer of the NN. 
-# Note: click the space after the function before the first paranthesis ( and press CTRL+I
-# first argument of Conv2D is nb_filter
+# Note: click the cursor after the first paranthesis ( and press CTRL+I to see Help function
+# We see that first argument of Conv2D is filters. filters is the number of feature detectors
+# you want to use. Second argument kernel_size is the size of the matrix (in this case, 3x3) 
+# of the feature detector.
+# 
 
 # Step 2 - Pooling
 classifier.add(MaxPooling2D(pool_size = (2, 2)))
 
 # Adding a second convolutional layer
-classifier.add(Conv2D(32, (3, 3), activation = 'relu'))
+classifier.add(Conv2D(32, (3, 3), activation = 'relu')) 
+# could go 32, 64, 128, etc. on feature detectors but it's gonna take long time
+
+# Below he talked about input_shape parameter from old package... can't find the equivalent on current
+# input_shape is the expected format size for each image. Note that all images
+# are need to be processed to the same size since all come in different size and shapes.
+# Remember that 2D is black/white image converted 1:1 on black/grey array/channel and 
+# 3D means the colored image converted 1:3 on red, green, blue arrays/channels during image 
+# processing part
+
 classifier.add(MaxPooling2D(pool_size = (2, 2)))
 
 # Step 3 - Flattening
